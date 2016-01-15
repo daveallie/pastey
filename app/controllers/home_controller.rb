@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @image_data = unless params[:pb_code].blank?
-      Net::HTTP.get(URI.parse("http://pastebin.com/raw/#{params[:pb_code]}")).split('~')
+    @image_data = unless params[:code].blank?
+      Net::HTTP.get(URI.parse("http://paste.ee/r/#{params[:code]}")).split('~')
     else
       []
     end.to_json
@@ -13,7 +13,7 @@ class HomeController < ApplicationController
       url = home_url
     else
       image_string = image_data.join('~')
-      pb_url = Net::HTTP.post_form(URI.parse('http://pastebin.com/api/api_post.php'), pastebin_options(image_string)).body
+      pb_url = Net::HTTP.post_form(URI.parse('http://paste.ee/api'), pasteee_options(image_string)).body
       url = home_url(pb_url.split('/').last)
     end
 
@@ -21,12 +21,12 @@ class HomeController < ApplicationController
   end
 
   private
-  def pastebin_options(code = nil)
+  def pasteee_options(code = nil)
     {
-      api_option: 'paste',
-      api_dev_key: ENV['PASTEBIN_API_KEY'],
-      api_paste_code: code,
-      api_paste_private: 1 # unlisted
+      key: ENV['PASTEEE_API_KEY'],
+      paste: code,
+      expire: 0,
+      format: :simple
     }
   end
 end
