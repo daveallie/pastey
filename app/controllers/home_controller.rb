@@ -8,17 +8,16 @@ class HomeController < ApplicationController
   end
 
   def shorten
-    # image_data = params[:image_data]
-    # if image_data.blank? || image_data.none?
-    #   url = home_url
-    # else
-    #   image_string = image_data.join('~')
-    #   pb_url = Net::HTTP.post_form(URI.parse('http://pastebin.com/api/api_post.php'), pastebin_options(image_string)).body
-    #   url = home_url(pb_url.split('/').last)
-    # end
+    image_data = params[:image_data]
+    if image_data.blank? || image_data.none?
+      url = home_url
+    else
+      image_string = image_data.join('~')
+      pb_url = Net::HTTP.post_form(URI.parse('http://pastebin.com/api/api_post.php'), pastebin_options(image_string)).body
+      url = home_url(pb_url.split('/').last)
+    end
 
-    # render json: url, status: 200
-    render text: home_url, status: 200
+    render text: url, status: 200
   end
 
   private
