@@ -1,0 +1,35 @@
+body {
+  background-color: #eee !important;
+  padding-top: 5px;
+}
+
+hr {
+  border-color: black !important;
+}
+
+.img-btn {
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.shortlink-address {
+  height: 43px !important;
+  width: 230px;
+}
+
+.shortlink {
+  text-align: right;
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.imgcontainer {
+  text-align: center;
+}
