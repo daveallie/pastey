@@ -93,6 +93,7 @@ Pastey.Handlers = function() {
         input.val(data)
         showInput()
         btn.button('reset')
+        history.replaceState('', 'Pastey', data)
       })
     },
     destroyImage: function(e) {
