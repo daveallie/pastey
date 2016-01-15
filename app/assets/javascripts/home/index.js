@@ -131,12 +131,12 @@ Pastey.Handlers = function() {
     },
     onDragover: function(e) {
       e.stopPropagation()
-      (e.preventDefault || e.originalEvent.preventDefault)()
+      e.preventDefault ? e.preventDefault() : (e.returnValue = false);
       (e.dataTransfer || e.originalEvent.dataTransfer).dropEffect = 'copy'
     },
     onDrop: function(e) {
       e.stopPropagation()
-      (e.preventDefault || e.originalEvent.preventDefault)()
+      e.preventDefault ? e.preventDefault() : (e.returnValue = false);
       var files = (e.dataTransfer || e.originalEvent.dataTransfer).files // Array of all files
       for (var i=0, file; file=files[i]; i++) {loadImage(file)}
     },
