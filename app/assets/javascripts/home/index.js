@@ -50,6 +50,8 @@ Pastey.Images = {
 
     el1.attr('data-id', id2)
     el2.attr('data-id', id1)
+    
+    Pastey.Images.Data.swapIds(id1, id2)
   }
 }
 
@@ -61,6 +63,11 @@ Pastey.Images.Data = function() {
     add: function(base64) {
       data[id] = base64
       return id++
+    },
+    swapIds: function(id1, id2) {
+      var temp = data[id1]
+      data[id1] = data[id2]
+      data[id2] = temp
     },
     remove: function(id) {
       delete data[id]
