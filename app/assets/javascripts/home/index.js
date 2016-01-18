@@ -8,7 +8,7 @@ Pastey.Images = {
       , imageUp = $('<span class="glyphicon glyphicon-arrow-up img-btn" aria-hidden="true"></span>')
       , imageDown = $('<span class="glyphicon glyphicon-arrow-down img-btn" aria-hidden="true"></span>')
       , buttonContainer = $('<div class="btncontainer" />').attr('data-id', id).append(deleteImage).append(imageUp).append(imageDown)
-    $('body').append($('<div class="imgcontainer" data-id='+id+'/>').append('<hr />').append(buttonContainer).append(img))
+    $('#content').append($('<div class="imgcontainer" data-id='+id+'/>').append('<hr />').append(buttonContainer).append(img))
 
     deleteImage.click(Pastey.Handlers.destroyImage)
     imageUp.click(Pastey.Handlers.moveImageUp)
