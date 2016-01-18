@@ -1,5 +1,31 @@
 Pastey = {}
 
+Pastey.EmptyState = (function() {
+  var hidden = false
+
+  return {
+    hide: function() {
+      if (!hidden) {
+        $('#empty-state').hide()
+        $('body').removeClass('empty-state-active')
+        hidden = true
+      }
+    },
+    show: function() {
+      if (hidden) {
+        $('body').addClass('empty-state-active')
+        $('#empty-state').fadeIn()
+        hidden = false
+      }
+    },
+    showIfNoImages: function() {
+      if (Pastey.Images.Data.count() == 0) {
+        Pastey.EmptyState.show()
+      }
+    }
+  }
+})()
+
 Pastey.Images = {
   addImage: function(base64) {
     var id = Pastey.Images.Data.add(base64)
@@ -72,6 +98,7 @@ Pastey.Handlers = function() {
   var readerOnLoad = function(event) {
     Pastey.Images.addImage(event.target.result)
     showBtn()
+    Pastey.EmptyState.hide()
   }
 
   var loadImage = function(file) {
@@ -99,6 +126,7 @@ Pastey.Handlers = function() {
     destroyImage: function(e) {
       Pastey.Images.destroyImage($(this).closest('.imgcontainer').data('id'))
       showBtn()
+      Pastey.EmptyState.showIfNoImages()
     },
     moveImageUp: function(e) {
       var thisImg = $(this).closest('.imgcontainer')
@@ -171,6 +199,8 @@ Pastey.init = function(data) {
     input.val(window.location.href.split('#')[0])
     btn.hide()
     input.show()
+
+    Pastey.EmptyState.hide()
 
     data.map(function(d) {
       Pastey.Images.addImage(d)

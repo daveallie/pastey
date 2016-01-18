@@ -1,6 +1,9 @@
 body {
   background-color: #eee !important;
   padding-top: 5px;
+  &.empty-state-active {
+    overflow: hidden;
+  }
 }
 
 hr {
@@ -36,4 +39,27 @@ hr {
 
 .imgcontainer {
   text-align: center;
+}
+
+#empty-state {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  height: 100vh;
+  #empty-state-content {
+    width: 100%;
+    border-width: 3px;
+    border-style: dashed;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 100px;
+    border-color: grey;
+    color: grey;
+    text-align: center;
+    padding: 10px;
+    font-size: 40pt;
+  }
 }

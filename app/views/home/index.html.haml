@@ -5,5 +5,14 @@
     .btn.btn-primary.shortlink-btn Get Shortlink
     %input.form-control.shortlink-address{type: :text, readonly: true, 'data-loading-text': 'Loading...', style: 'display:none;'}
 
+#empty-state
+  #empty-state-content
+    paste or drag
+    %br
+    images or gifs
+    %br
+    here
+
 :javascript
+  $('body').addClass('empty-state-active')
   Pastey.init(#{@image_data})
