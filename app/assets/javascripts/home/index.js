@@ -106,7 +106,10 @@ Pastey.Handlers = function() {
 
       if (prevImg.length === 0) return;
 
-      thisImg.insertBefore(prevImg)
+      prevImg.slideUp(200, function() {
+        thisImg.insertBefore(prevImg)
+        prevImg.slideDown(200)
+      })
       Pastey.Images.swapIds(thisImg.data('id'), prevImg.data('id'))
       showBtn()
     },
@@ -116,7 +119,11 @@ Pastey.Handlers = function() {
 
       if (nextImg.length === 0) return;
 
-      thisImg.insertAfter(nextImg)
+      nextImg.slideUp(200, function() {
+        thisImg.insertAfter(nextImg)
+        nextImg.slideDown(200)
+      })
+
       Pastey.Images.swapIds(thisImg.data('id'), nextImg.data('id'))
       showBtn()
     },
