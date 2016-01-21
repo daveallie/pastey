@@ -50,7 +50,7 @@ Pastey.Images = {
 
     el1.attr('data-id', id2)
     el2.attr('data-id', id1)
-    
+
     Pastey.Images.Data.swapIds(id1, id2)
   }
 }
@@ -213,4 +213,6 @@ Pastey.init = function(data) {
       Pastey.Images.addImage(d)
     })
   }
+
+  $(window).trigger('cover-ready')
 }

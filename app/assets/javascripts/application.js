@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+function uncover() {
+  $('#cover').fadeOut(1000);
+}
+
+$(window).on('cover-ready', function() {
+  uncover()
+})
